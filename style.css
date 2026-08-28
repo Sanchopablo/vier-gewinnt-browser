@@ -1,0 +1,129 @@
+:root {
+  --bg: #0f172a;
+  --panel: #111827;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --board: #1d4ed8;
+  --hole: #0b1020;
+  --red: #ef4444;
+  --yellow: #facc15;
+  --accent: #22c55e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at top, #1f2937, var(--bg));
+  color: var(--text);
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+.app {
+  width: min(92vw, 760px);
+  background: color-mix(in oklab, var(--panel) 92%, black);
+  border: 1px solid #374151;
+  border-radius: 16px;
+  padding: 1.25rem;
+  box-shadow: 0 20px 40px rgb(0 0 0 / 0.35);
+}
+
+h1 {
+  margin: 0 0 0.25rem;
+}
+
+.subtitle {
+  margin-top: 0;
+  color: var(--muted);
+}
+
+.red { color: var(--red); font-weight: 700; }
+.yellow { color: var(--yellow); font-weight: 700; }
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+#restartBtn {
+  background: var(--accent);
+  color: #052e16;
+  border: 0;
+  border-radius: 10px;
+  font-weight: 700;
+  padding: 0.6rem 0.9rem;
+  cursor: pointer;
+}
+
+#restartBtn:hover { filter: brightness(1.05); }
+
+#status {
+  margin: 0;
+  font-weight: 600;
+  text-align: right;
+}
+
+.board-wrap {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.column-buttons {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.4rem;
+}
+
+.drop-btn {
+  padding: 0.5rem 0;
+  border-radius: 8px;
+  border: 1px solid #4b5563;
+  background: #1f2937;
+  color: var(--text);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.drop-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+  background: var(--board);
+  padding: 0.7rem;
+  border-radius: 14px;
+}
+
+.cell {
+  aspect-ratio: 1;
+  width: 100%;
+  border-radius: 50%;
+  background: var(--hole);
+  border: 2px solid rgb(255 255 255 / 0.08);
+}
+
+.cell.p1 { background: var(--red); }
+.cell.p2 { background: var(--yellow); }
+
+@media (max-width: 560px) {
+  .controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  #status {
+    text-align: left;
+  }
+}
